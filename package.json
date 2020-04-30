@@ -1,0 +1,19 @@
+{
+  "name": "food4poor",
+  "version": "1.0.0",
+  "description": "Building a web app for people to give away their extra food to needy people",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sureshmangs/Food4Poor.git"
+  },
+  "author": "Saksham Kashyap && Suresh Mangs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sureshmangs/Food4Poor/issues"
+  },
+  "homepage": "https://github.com/sureshmangs/Food4Poor#readme"
+}
