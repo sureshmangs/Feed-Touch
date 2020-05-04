@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
+
 class Nav extends Component {
+ 
     render() {
         return (
             <div>
@@ -22,6 +24,7 @@ class Nav extends Component {
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/Contact">CONTACT</Link>
                                 </li>
+                               
                             </ul>
                         </div>
                     </div>

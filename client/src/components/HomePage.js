@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import fire from '../Config/Fire';
+
 
 class HomePage extends Component {
+
+    logout = () => {
+        fire.auth().signOut();
+    }
+
     render() {
         return (
             <header className="masthead">
+                {/* Temporary Pushing LOGOUT BUTTON */}
+                <li className="nav-item">
+                    <button onClick={this.logout}>Logout</button>
+                </li>
                 <div className="container d-flex h-100 align-items-center">
                     <div className="mx-auto text-center">
                         <h1 className="mx-auto my-0 text-uppercase">Food for Poor</h1>
