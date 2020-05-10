@@ -4,7 +4,13 @@
   "description": "Building a web app for people to give away their extra food to needy people",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "heroku-postbuild": "npm run client-install && npm run client-build",
+    "client-install": "cd client && npm install",
+    "client-build": "cd client && npm run build",
+    "server-dev": "cross-env NODE_ENV=prod nodemon server.js",
+    "client-dev": "cd client && npm start",
+    "start-dev": "concurrently \"npm run server-dev\" \"npm run client-dev\""
   },
   "repository": {
     "type": "git",
@@ -15,5 +21,22 @@
   "bugs": {
     "url": "https://github.com/sureshmangs/Food4Poor/issues"
   },
-  "homepage": "https://github.com/sureshmangs/Food4Poor#readme"
+  "homepage": "https://github.com/sureshmangs/Food4Poor#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.2.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-promise-router": "^3.0.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.13",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.3",
+    "passport": "^0.4.1",
+    "passport-google-token": "^0.1.2",
+    "passport-jwt": "^4.0.0"
+  }
 }
