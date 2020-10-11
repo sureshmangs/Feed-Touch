@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer'
 import * as actions from './actions/authAction';
+import './App.css';
 
 class App extends Component {
 
