@@ -4,6 +4,7 @@ const { ExtractJwt } = require('passport-jwt');
 const GoogleStrategy = require('passport-google-token').Strategy;
 const dotenv = require('dotenv');
 const User = require('./models/user');
+const Profile = require('./models/profile');
 
 dotenv.config();
 
@@ -37,7 +38,7 @@ passport.use('jwt', new JwtStrategy({
 passport.use('googleToken', new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar']
+    scope: ['openid', 'email']
 }, async (accessToken, refreshToken, profile, done) => {
     try {
         const existingUser = await User.findOne({ "google.id": profile.id });
@@ -56,6 +57,18 @@ passport.use('googleToken', new GoogleStrategy({
         });
 
         await newUser.save();
+
+        // saving user profile data
+        const newUserProfile = new Profile({
+            userid: profile.id,
+            name: profile.name.givenName + ' ' + profile.name.familyName,
+            email: profile.emails[0].value,
+            image: profile._json.picture,
+            acc_created: new Date()
+        });
+
+        await newUserProfile.save();
+
         done(null, newUser);
     } catch (error) {
         done(error, false, error.message);

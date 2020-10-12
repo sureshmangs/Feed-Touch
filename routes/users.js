@@ -17,5 +17,8 @@ router.route('/status')
 router.route('/dashboard')
     .get(passportJWT, UsersController.dashboard);
 
+router.route('/userprofile')
+    .post(UsersController.fetchUserProfile);
+
 
 module.exports = router;
